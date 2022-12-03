@@ -17,5 +17,5 @@ jobs:
     - name: Build and Push the Docker image
       run: |
         echo "${{ secrets.DOCKERHUBPASSWORD}}" | docker login -u "iredkin" --password-stdin
-        docker build . --file Dockerfile --tag pro690final/pro690image
-        docker push pro690final/pro690image
+        docker build . --file Dockerfile --tag iredkin/pro690image
+        docker push iredkin/pro690image
