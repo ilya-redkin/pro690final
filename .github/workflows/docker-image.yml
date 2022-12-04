@@ -20,6 +20,7 @@ jobs:
   #       docker build . --file Dockerfile --tag iredkin/pro690image:${{github.run_number}}
   #       docker push iredkin/pro690image:${{github.run_number}}
 
+
   deliver:
     runs-on: ubuntu-latest
     steps:
