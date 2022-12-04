@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build and Push the Docker image
-      run: |
-        image_timestamp=$(date +%s)
-        echo "${{ secrets.DOCKERHUBPASSWORD}}" | docker login -u "iredkin" --password-stdin
-        docker build . --file Dockerfile --tag iredkin/pro690image:$image_timestamp
-        docker push iredkin/pro690image:$image_timestamp
+    # - uses: actions/checkout@v3
+    # - name: Build and Push the Docker image
+    #   run: |
+    #     image_timestamp=$(date +%s)
+    #     echo "${{ secrets.DOCKERHUBPASSWORD}}" | docker login -u "iredkin" --password-stdin
+    #     docker build . --file Dockerfile --tag iredkin/pro690image:$image_timestamp
+    #     docker push iredkin/pro690image:$image_timestamp
 
     - name: Checkout Target Repository
       uses: actions/checkout@v3
