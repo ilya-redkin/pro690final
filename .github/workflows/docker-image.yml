@@ -26,7 +26,7 @@ jobs:
     - name: Checkout Target Repository
       uses: actions/checkout@v3
       with:
-        repository: ilya-redkin/argocd-openshift
+        repository: ilya-redkin/argocd-oppenshift
         path: memory-game/application-mainfest
         token: ${{ secrets.GITHUB_TOKEN }}
 
