@@ -35,7 +35,7 @@ jobs:
     - uses: fjogeleit/yaml-update-action@main
       with:
         valueFile: 'deployment.yaml'
-        # propertyPath: '.spec.template.spec.containers[0].image'
+        propertyPath: '$.spec.template.spec.containers[0].image'
         value: iredkin/pro690image:${{github.run_number}}
         repository: ilya-redkin/argocd-openshift
         branch: main
