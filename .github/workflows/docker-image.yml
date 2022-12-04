@@ -28,7 +28,7 @@ jobs:
       with:
         repository: ilya-redkin/argocd-openshift
         path: argocd-openshift
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.FULL_ACCESS_TOKEN }}
     - name: cat the file
       run: cat /home/runner/work/pro690final/pro690final/argocd-openshift/memory-game/application-mainfest/deployment.yaml
     - name: Update Image Version in the related HelmChart values.yaml
@@ -40,5 +40,5 @@ jobs:
         repository: ilya-redkin/argocd-openshift
         branch: main
         message: 'Updated by memory-game GitHub Actions at $image_timestamp'
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.FULL_ACCESS_TOKEN }}
         workDir: argocd-openshift/memory-game/application-mainfest
