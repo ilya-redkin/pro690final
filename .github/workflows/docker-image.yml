@@ -25,13 +25,14 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: ilya-redkin/argocd-openshift
-        path: infrastructure
+        path: argocd-openshift/memory-game/application-mainfest
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Update Image Version in the related HelmChart values.yaml
       uses: fjogeleit/yaml-update-action@main
       with:
-        valueFile: 'argocd-openshift/memory-game/application-mainfest/deployment.yaml'
+        # valueFile: 'argocd-openshift/memory-game/application-mainfest/deployment.yaml'
+        valueFile: 'deployment.yaml'
         propertyPath: 'spec.template.spec.containers[0].image'
         value: iredkin/pro690image:$image_timestamp
         repository: ilya-redkin/argocd-openshift
