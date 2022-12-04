@@ -20,25 +20,25 @@ jobs:
         docker build . --file Dockerfile --tag iredkin/pro690image:${{github.run_number}}
         docker push iredkin/pro690image:${{github.run_number}}
 
-  # deliver:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   # - uses: actions/checkout@v3
-  #   - name: Checkout Target Repository
-  #     uses: actions/checkout@v3
-  #     with:
-  #       repository: ilya-redkin/argocd-openshift
-  #       path: memory-game/application-mainfest
-  #       token: ${{ secrets.GITHUB_TOKEN }}
-  #   # - uses: actions/checkout@v3
-  #   # - name: Update Image Version in the related HelmChart values.yaml
-  #   - uses: fjogeleit/yaml-update-action@main
-  #     with:
-  #       valueFile: 'deployment.yaml'
-  #       propertyPath: '.spec.template.spec.containers[0].image'
-  #       value: iredkin/pro690image:${{github.run_number}}
-  #       repository: ilya-redkin/argocd-openshift
-  #       branch: main
-  #       message: 'Updated by memory-game GitHub Actions at $image_timestamp'
-  #       token: ${{ secrets.GITHUB_TOKEN }}
-  #       workDir: memory-game/application-mainfest
+  deliver:
+    runs-on: ubuntu-latest
+    steps:
+    # - uses: actions/checkout@v3
+    # - name: Checkout Target Repository
+    #   uses: actions/checkout@v3
+    #   with:
+    #     repository: ilya-redkin/argocd-openshift
+    #     path: memory-game/application-mainfest
+    #     token: ${{ secrets.GITHUB_TOKEN }}
+    # # - uses: actions/checkout@v3
+    - name: Update Image Version in the related HelmChart values.yaml
+    - uses: fjogeleit/yaml-update-action@main
+      with:
+        valueFile: 'deployment.yaml'
+        propertyPath: '.spec.template.spec.containers[0].image'
+        value: iredkin/pro690image:${{github.run_number}}
+        repository: ilya-redkin/argocd-openshift
+        branch: main
+        message: 'Updated by memory-game GitHub Actions at $image_timestamp'
+        token: ${{ secrets.GITHUB_TOKEN }}
+        workDir: memory-game/application-mainfest
