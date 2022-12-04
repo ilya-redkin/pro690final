@@ -34,8 +34,8 @@ jobs:
     # - name: Update Image Version in the related HelmChart values.yaml
     - uses: fjogeleit/yaml-update-action@main
       with:
-        valueFile: 'deployfment.yaml'
-        propertyPath: 'apiVersion'
+        valueFile: 'deployment.yaml'
+        propertyPath: '.apiVersion'
         value: iredkin/pro690image:${{github.run_number}}
         repository: ilya-redkin/argocd-openshift
         branch: main
