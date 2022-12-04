@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: ilya-redkin/argocd-openshift
-        path: argocd-openshift/memory-game/application-mainfest
+        path: ../../argocd-openshift/memory-game/application-mainfest
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Update Image Version in the related HelmChart values.yaml
