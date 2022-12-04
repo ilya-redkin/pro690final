@@ -29,13 +29,13 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Update Image Version in the related HelmChart values.yaml
-        uses: fjogeleit/yaml-update-action@main
-        with:
-          valueFile: 'argocd-openshift/memory-game/application-mainfest/deployment.yaml'
-          propertyPath: 'spec.template.spec.containers[0].image'
-          value: iredkin/pro690image:$image_timestamp
-          repository: ilya-redkin/argocd-openshift
-          branch: main
-          message: 'Updated by memory-game GitHub Actions at $image_timestamp'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # workDir: infrastructure
+      uses: fjogeleit/yaml-update-action@main
+      with:
+        valueFile: 'argocd-openshift/memory-game/application-mainfest/deployment.yaml'
+        propertyPath: 'spec.template.spec.containers[0].image'
+        value: iredkin/pro690image:$image_timestamp
+        repository: ilya-redkin/argocd-openshift
+        branch: main
+        message: 'Updated by memory-game GitHub Actions at $image_timestamp'
+        token: ${{ secrets.GITHUB_TOKEN }}
+        # workDir: infrastructure
