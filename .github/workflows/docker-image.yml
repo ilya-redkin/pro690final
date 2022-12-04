@@ -26,19 +26,19 @@ jobs:
     - name: Checkout Target Repository
       uses: actions/checkout@v3
       with:
-        repository: ilya-redkin/argocd-openshift
-        path: argocd-openshift/memory-game/application-mainfest
+        repository: ilya-redkin/argocdmanifest
+        # path: argocd-openshift/memory-game/application-mainfest
         token: ${{ secrets.FULL_ACCESS_TOKEN }}
-    - name: Print the deployment file
-      run: cat /home/runner/work/pro690final/pro690final/argocd-openshift/memory-game/application-mainfest/deployment.yaml
+    # - name: Print the deployment file
+    #   run: cat /home/runner/work/pro690final/pro690final/argocd-openshift/memory-game/application-mainfest/deployment.yaml
     - name: Update Image Version in the related HelmChart values.yaml
       uses: fjogeleit/yaml-update-action@main
       with:
         valueFile: 'deployment.yaml'
         propertyPath: '$.spec.template.spec.containers[0].image'
         value: iredkin/pro690image:${{github.run_number}}
-        repository: ilya-redkin/argocd-openshift
+        repository: ilya-redkin/argocdmanifest
         branch: main
-        message: 'Updated by memory-game GitHub Actions at $image_timestamp'
+        message: 'Updated by memory-game GitHub Actions during ${{github.run_number}} run'
         token: ${{ secrets.FULL_ACCESS_TOKEN }}
-        workDir: argocd-openshift/memory-game/application-mainfest
+        # workDir: argocd-openshift/memory-game/application-mainfest
