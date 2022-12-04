@@ -29,7 +29,7 @@ jobs:
         repository: ilya-redkin/argocd-openshift
         path: argocd-openshift
         token: ${{ secrets.FULL_ACCESS_TOKEN }}
-    - name: cat the file
+    - name: Print the deployment file
       run: cat /home/runner/work/pro690final/pro690final/argocd-openshift/memory-game/application-mainfest/deployment.yaml
     - name: Update Image Version in the related HelmChart values.yaml
       uses: fjogeleit/yaml-update-action@main
