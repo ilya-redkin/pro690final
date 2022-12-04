@@ -20,3 +20,13 @@ jobs:
         echo "${{ secrets.DOCKERHUBPASSWORD}}" | docker login -u "iredkin" --password-stdin
         docker build . --file Dockerfile --tag iredkin/pro690image:$image_timestamp
         docker push iredkin/pro690image:$image_timestamp
+
+    - name: Update Image Version in the related manifest.yaml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'argocd-openshift/memory-game/application-manifest/deployment.yaml'
+          propertyPath: 'spec.template.spec.containers[0].image'
+          value: iredkin/pro690image:$image_timestamp
+          branch: main
+          commitChange: true
+          message: 'testing yaml change'
