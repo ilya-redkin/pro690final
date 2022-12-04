@@ -27,7 +27,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: ilya-redkin/argocd-openshift
-        # path: memory-game/application-mainfest
+        path: ''
         token: ${{ secrets.GITHUB_TOKEN }}
     # - name: cat the file
     #   run: cat /home/runner/work/argocd-openshift/argocd-openshift/memory-game/application-mainfest/deployment.yaml
