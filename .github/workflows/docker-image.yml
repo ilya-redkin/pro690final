@@ -8,30 +8,30 @@ on:
 
 jobs:
 
-  build:
+  # build:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build and Push the Docker image
-      run: |
-        echo "${{ secrets.DOCKERHUBPASSWORD}}" | docker login -u "iredkin" --password-stdin
-        docker build . --file Dockerfile --tag iredkin/pro690image:${{github.run_number}}
-        docker push iredkin/pro690image:${{github.run_number}}
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: Build and Push the Docker image
+  #     run: |
+  #       echo "${{ secrets.DOCKERHUBPASSWORD}}" | docker login -u "iredkin" --password-stdin
+  #       docker build . --file Dockerfile --tag iredkin/pro690image:${{github.run_number}}
+  #       docker push iredkin/pro690image:${{github.run_number}}
 
   deliver:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
+    - name: Checkout Target Repository
+      uses: actions/checkout@v3
+      with:
+        repository: ilya-redkin/argocd-openshift
+        path: memory-game/application-mainfest
+        token: ${{ secrets.GITHUB_TOKEN }}
     # - uses: actions/checkout@v3
-    # - name: Checkout Target Repository
-    #   uses: actions/checkout@v3
-    #   with:
-    #     repository: ilya-redkin/argocd-openshift
-    #     path: memory-game/application-mainfest
-    #     token: ${{ secrets.GITHUB_TOKEN }}
-    # # - uses: actions/checkout@v3
-    - name: Update Image Version in the related HelmChart values.yaml
+    # - name: Update Image Version in the related HelmChart values.yaml
     - uses: fjogeleit/yaml-update-action@main
       with:
         valueFile: 'deployment.yaml'
