@@ -30,7 +30,7 @@ jobs:
         path: memory-game/application-mainfest
         token: ${{ secrets.GITHUB_TOKEN }}
     - name: cat the file
-      run: cat /home/runner/work/pro690final/pro690final/memory-game/application-mainfest/deployment.yaml
+      run: cat /home/runner/work/argocd-openshift/argocd-openshift/memory-game/application-mainfest/deployment.yaml
     - name: Update Image Version in the related HelmChart values.yaml
       uses: fjogeleit/yaml-update-action@main
       with:
