@@ -41,4 +41,4 @@ jobs:
         branch: main
         message: 'Updated by memory-game GitHub Actions at $image_timestamp'
         token: ${{ secrets.GITHUB_TOKEN }}
-        workDir: argocd-openshift/argocd-openshift
+        workDir: argocd-openshift/memory-game/application-mainfest/
