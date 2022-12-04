@@ -23,15 +23,13 @@ jobs:
   deliver:
     runs-on: ubuntu-latest
     steps:
-    # - uses: actions/checkout@v3
-    # - name: Checkout Target Repository
-    #   uses: actions/checkout@v3
-    #   with:
-    #     repository: ilya-redkin/argocd-openshift
-    #     path: memory-game/application-mainfest
-    #     token: ${{ secrets.GITHUB_TOKEN }}
-    # - uses: actions/checkout@v3
-    # - name: Update Image Version in the related HelmChart values.yaml
+    - name: Checkout Target Repository
+      uses: actions/checkout@v3
+      with:
+        repository: ilya-redkin/argocd-openshift
+        path: memory-game/application-mainfest
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Update Image Version in the related HelmChart values.yaml
     - uses: fjogeleit/yaml-update-action@main
       with:
         valueFile: 'deployment.yaml'
