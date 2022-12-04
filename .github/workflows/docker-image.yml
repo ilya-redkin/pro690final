@@ -23,10 +23,11 @@ jobs:
   deliver:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v3
     - name: Checkout Target Repository
       uses: actions/checkout@v3
       with:
-        repository: ilya-redkin/argocd-oppenshift
+        repository: ilya-redkin/argocd-openshift
         path: memory-game/application-mainfest
         token: ${{ secrets.GITHUB_TOKEN }}
 
