@@ -24,6 +24,7 @@ Open localhost:3000 in the browser
 
 3. Open ``localhost:3000`` in the browser
 
+
 #### docker-compose.yml
 1. Run ``docker compose up``
 2. Open ``localhost:3000`` in the browser
